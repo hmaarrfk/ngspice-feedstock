@@ -11,7 +11,8 @@ source:
   patches:
     - patches/libtoolize-name.patch
     - patches/fix-xspice-ldflags.patch
-    - patches/vngspice-install-location.patch  # [win]
+    - patches/vngspice-install-location.patch
+    - patches/remove_hardcoded_flex-bison_path_win.patch
 
 build:
   number: 1
@@ -35,16 +36,13 @@ outputs:
         - texinfo      # [unix]
         - bison        # [unix]
         - flex         # [unix]
+        - winflexbison   # [win]
 
       host:
         - llvm-openmp  # [osx]
         - libgomp      # [linux]
         - ncurses      # [unix]
         - readline     # [unix]
-
-        # technically this ought to be in the 'build' requirements,
-        # but it's easier to locate if we put it here, via LIBRARY_BIN
-        - winflexbison   # [win]
 
     test:
       commands:
@@ -69,6 +67,7 @@ outputs:
         - texinfo      # [unix]
         - bison        # [unix]
         - flex         # [unix]
+        - winflexbison   # [win]
 
       host:
         - {{ pin_subpackage('ngspice-lib', exact=True) }}
@@ -79,10 +78,6 @@ outputs:
         - xorg-libx11  # [unix]
         - xorg-libxaw  # [unix]
         - xorg-libxt   # [unix]
-
-        # technically this ought to be in the 'build' requirements,
-        # but it's easier to locate if we put it here, via LIBRARY_BIN
-        - winflexbison   # [win]
 
       run:
         - {{ pin_subpackage('ngspice-lib', exact=True) }}
