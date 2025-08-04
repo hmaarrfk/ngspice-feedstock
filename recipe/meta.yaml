@@ -10,8 +10,8 @@ source:
   patches:
     - patches/libtoolize-name.patch
     - patches/fix-xspice-ldflags.patch
-    - patches/vngspice-install-location.patch
-    - patches/remove_hardcoded_flex-bison_path_win.patch
+    - patches/0001-Fixup-installation-process.patch
+    - patches/0002-Address-flex-bison-needs.patch
 
 build:
   number: 0
