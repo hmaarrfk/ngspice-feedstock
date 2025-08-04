@@ -1,4 +1,4 @@
-{% set version = "42" %}
+{% set version = "44" %}
 
 package:
   name: ngspice-suite
